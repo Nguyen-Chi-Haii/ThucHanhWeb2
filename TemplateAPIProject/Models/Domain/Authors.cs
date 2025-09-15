@@ -1,0 +1,14 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TemplateAPIProject.Models.Domain
+{
+
+    public class Author
+    {
+        [Key]
+        public int Id { get; set; }
+        public required string FullName { get; set; }
+        //Navigation properties- One author has many book_author public List<Book_Author> Book_Authors { get; set; }
+        public required List<Book_Author> Book_Authors { get; set; }
+    }
+}
