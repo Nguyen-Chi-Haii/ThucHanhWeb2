@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "TemplateAPIProject.Controller.BookController",
+    "ContainingType": "TemplateAPIProject.Controllers.BookController",
     "Method": "AddBook",
     "RelativePath": "api/Book/add-book",
     "HttpMethod": "POST",
@@ -16,7 +16,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "TemplateAPIProject.Controller.BookController",
+    "ContainingType": "TemplateAPIProject.Controllers.BookController",
     "Method": "DeleteBookById",
     "RelativePath": "api/Book/delete-book-by-id/{id}",
     "HttpMethod": "DELETE",
@@ -32,7 +32,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "TemplateAPIProject.Controller.BookController",
+    "ContainingType": "TemplateAPIProject.Controllers.BookController",
     "Method": "GetAll",
     "RelativePath": "api/Book/get-all-books",
     "HttpMethod": "GET",
@@ -42,7 +42,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "TemplateAPIProject.Controller.BookController",
+    "ContainingType": "TemplateAPIProject.Controllers.BookController",
     "Method": "GetBookById",
     "RelativePath": "api/Book/get-book-by-id/{id}",
     "HttpMethod": "GET",
@@ -58,7 +58,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "TemplateAPIProject.Controller.BookController",
+    "ContainingType": "TemplateAPIProject.Controllers.BookController",
     "Method": "UpdateBookById",
     "RelativePath": "api/Book/update-book-by-id/{id}",
     "HttpMethod": "PUT",

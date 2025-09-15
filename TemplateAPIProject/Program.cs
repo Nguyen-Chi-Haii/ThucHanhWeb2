@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TemplateAPIProject.Data;
+using TemplateAPIProject.Repositories;
+using TemplateAPIProject.Repositories.TemplateAPIProject.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<IBookRepository,SQLBookRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
