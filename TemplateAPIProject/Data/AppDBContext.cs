@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TemplateAPIProject.Models.Domain;
 
 namespace TemplateAPIProject.Data
 {
@@ -9,18 +10,20 @@ namespace TemplateAPIProject.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TemplateAPIProject.Models.Domain.Book_Author>()
+            modelBuilder.Entity<Book_Author>()
                 .HasKey(ba => new { ba.BookId, ba.AuthorId });
-            modelBuilder.Entity<TemplateAPIProject.Models.Domain.Book_Author>()
+
+            modelBuilder.Entity<Book_Author>()
                 .HasOne(ba => ba.Book)
                 .WithMany(b => b.Book_Authors)
                 .HasForeignKey(ba => ba.BookId);
-            modelBuilder.Entity<TemplateAPIProject.Models.Domain.Book_Author>()
+
+            modelBuilder.Entity<Book_Author>()
                 .HasOne(ba => ba.Author)
                 .WithMany(a => a.Book_Authors)
                 .HasForeignKey(ba => ba.AuthorId);
-            base.OnModelCreating(modelBuilder);
         }
+
         public DbSet<TemplateAPIProject.Models.Domain.Book> Books { get; set; }
         public DbSet<TemplateAPIProject.Models.Domain.Publisher> Publishers { get; set; }
         public DbSet<TemplateAPIProject.Models.Domain.Author> Authors { get; set; }
