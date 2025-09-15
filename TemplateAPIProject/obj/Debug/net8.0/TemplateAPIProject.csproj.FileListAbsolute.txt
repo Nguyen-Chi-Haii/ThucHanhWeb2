@@ -204,3 +204,4 @@ D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.bu
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\Template.E09BDDB7.Up2Date
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.genruntimeconfig.cache
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\ref\TemplateAPIProject.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
