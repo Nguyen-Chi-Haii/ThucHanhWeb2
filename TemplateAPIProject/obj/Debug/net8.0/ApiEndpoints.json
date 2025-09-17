@@ -1,5 +1,100 @@
 [
   {
+    "ContainingType": "TemplateAPIProject.Controller.PublishersController",
+    "Method": "AddPublisher",
+    "RelativePath": "add-publisher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addPublisherRequestDTO",
+        "Type": "TemplateAPIProject.Models.DTO.AddPublisherRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.AuthorsController",
+    "Method": "AddAuthors",
+    "RelativePath": "api/Authors/add-authors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addAuthorRequestDTO",
+        "Type": "TemplateAPIProject.Models.DTO.AddAuthorRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.AuthorsController",
+    "Method": "DeleteBookById",
+    "RelativePath": "api/Authors/delete-author-by-id/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.AuthorsController",
+    "Method": "GetAllAuthor",
+    "RelativePath": "api/Authors/get-all-author",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.AuthorsController",
+    "Method": "GetAuthorById",
+    "RelativePath": "api/Authors/get-author-by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.AuthorsController",
+    "Method": "UpdateBookById",
+    "RelativePath": "api/Authors/update-author-by-id/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "authorDTO",
+        "Type": "TemplateAPIProject.Models.DTO.AuthorNoIdDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TemplateAPIProject.Controllers.BookController",
     "Method": "AddBook",
     "RelativePath": "api/Book/add-book",
@@ -73,6 +168,69 @@
       {
         "Name": "bookDTO",
         "Type": "TemplateAPIProject.Models.DTO.AddBookRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.PublishersController",
+    "Method": "DeletePublisherById",
+    "RelativePath": "delete-publisher-by-id/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.PublishersController",
+    "Method": "GetAllPublisher",
+    "RelativePath": "get-all-publisher",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.PublishersController",
+    "Method": "GetPublisherById",
+    "RelativePath": "get-publisher-by-id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.PublishersController",
+    "Method": "UpdatePublisherById",
+    "RelativePath": "update-publisher-by-id/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "publisherDTO",
+        "Type": "TemplateAPIProject.Models.DTO.PublisherNoIdDTO",
         "IsRequired": true
       }
     ],
