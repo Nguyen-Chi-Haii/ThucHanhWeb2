@@ -45,12 +45,20 @@ namespace TemplateAPIProject.Controllers
 
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
-            if (ValidateAddBook(addBookRequestDTO))
+            if (!ModelState.IsValid)
             {
-                var bookAdd = _bookRepository.AddBookAsync(addBookRequestDTO);
-                return Ok(bookAdd);
+                return BadRequest(ModelState);
             }
-            return BadRequest(ModelState);
+
+            try
+            {
+                var createdBook = await _bookRepository.AddBookAsync(addBookRequestDTO);
+                return Ok(new { Message = "Book added successfully", Book = createdBook });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         // PUT http://localhost:port/api/book/update-book-by-id/1

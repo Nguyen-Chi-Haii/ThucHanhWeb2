@@ -62,6 +62,28 @@ namespace TemplateAPIProject.Repositories
         // Thêm sách (async)
         public async Task<AddBookRequestDTO> AddBookAsync(AddBookRequestDTO addBookRequestDTO)
         {
+            // 1. Kiểm tra Publisher tồn tại
+            var publisherExists = await _dbContext.Publishers
+                .AnyAsync(p => p.Id == addBookRequestDTO.PublisherID);
+
+            if (!publisherExists)
+            {
+                throw new Exception($"Publisher with ID {addBookRequestDTO.PublisherID} does not exist");
+            }
+
+            // 2. Kiểm tra Authors tồn tại
+            var existingAuthors = await _dbContext.Authors
+                .Where(a => addBookRequestDTO.AuthorIds.Contains(a.Id))
+                .ToListAsync();
+
+            if (existingAuthors.Count != addBookRequestDTO.AuthorIds.Count)
+            {
+                var missingAuthors = addBookRequestDTO.AuthorIds
+                    .Except(existingAuthors.Select(a => a.Id))
+                    .ToList();
+
+                throw new Exception($"These Author IDs do not exist: {string.Join(", ", missingAuthors)}");
+            }
             var bookDomainModel = new Book
             {
                 Title = addBookRequestDTO.Title,

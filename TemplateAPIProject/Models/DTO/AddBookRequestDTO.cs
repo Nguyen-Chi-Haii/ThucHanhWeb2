@@ -16,7 +16,9 @@ namespace TemplateAPIProject.Models.DTO
         public DateTime DateAdded { get; set; }
 
         // Navigation Properties
+        [Required]
         public int PublisherID { get; set; }
+        [Required]
         public List<int> AuthorIds { get; set; } = new List<int>();
     }
 
