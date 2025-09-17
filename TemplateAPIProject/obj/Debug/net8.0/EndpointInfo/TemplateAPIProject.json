@@ -411,11 +411,14 @@
         "additionalProperties": false
       },
       "AddBookRequestDTO": {
+        "required": [
+          "title"
+        ],
         "type": "object",
         "properties": {
           "title": {
-            "type": "string",
-            "nullable": true
+            "minLength": 10,
+            "type": "string"
           },
           "description": {
             "type": "string",

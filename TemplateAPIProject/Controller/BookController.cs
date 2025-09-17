@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Catel.Data;
+using Microsoft.AspNetCore.Mvc;
 using TemplateAPIProject.Models.DTO;
 using TemplateAPIProject.Repositories;
 using TemplateAPIProject.Repositories.TemplateAPIProject.Repositories;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TemplateAPIProject.Controllers
 {
@@ -40,10 +42,15 @@ namespace TemplateAPIProject.Controllers
 
         // POST http://localhost:port/api/book/add-book
         [HttpPost("add-book")]
+
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
-            var createdBook = await _bookRepository.AddBookAsync(addBookRequestDTO);
-            return Ok(new { Message = "Book added successfully", Book = createdBook });
+            if (ValidateAddBook(addBookRequestDTO))
+            {
+                var bookAdd = _bookRepository.AddBookAsync(addBookRequestDTO);
+                return Ok(bookAdd);
+            }
+            return BadRequest(ModelState);
         }
 
         // PUT http://localhost:port/api/book/update-book-by-id/1
@@ -72,6 +79,31 @@ namespace TemplateAPIProject.Controllers
             }
 
             return Ok(new { Message = "Book deleted successfully" });
+        }
+        private bool ValidateAddBook(AddBookRequestDTO addBookRequestDTO)
+        {
+            if (addBookRequestDTO == null)
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO), $"Please add book data");
+                return false;
+            }
+            // kiem tra Description NotNull
+            if (string.IsNullOrEmpty(addBookRequestDTO.Description))
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO.Description),
+               $"{nameof(addBookRequestDTO.Description)} cannot be null");
+            }
+            // kiem tra rating (0,5)
+            if (addBookRequestDTO.Rate < 0 || addBookRequestDTO.Rate > 5)
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO.Rate),
+               $"{nameof(addBookRequestDTO.Rate)} cannot be less than 0 and more than 5");
+            }
+            if (ModelState.ErrorCount > 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
