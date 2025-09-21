@@ -20,11 +20,18 @@ namespace TemplateAPIProject.Controllers
 
         // GET http://localhost:port/api/book/get-all-books
         [HttpGet("get-all-books")]
-        public async Task<IActionResult> GetAll()
+        [HttpGet]
+        public async Task<IActionResult> GetAll(
+            [FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool isAscending,
+            [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
         {
-            var allBooksDTO = await _bookRepository.GetAllBooksAsync();
-            return Ok(allBooksDTO);
+            var allBooks = await _bookRepository.GetAllBooksAsync(filterOn, filterQuery, sortBy,
+isAscending);
+            return Ok(allBooks);
         }
+
+
 
         // GET http://localhost:port/api/book/get-book-by-id/1
         [HttpGet("get-book-by-id/{id}")]

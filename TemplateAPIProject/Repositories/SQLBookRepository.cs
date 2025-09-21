@@ -18,18 +18,49 @@ namespace TemplateAPIProject.Repositories
             _dbContext = dbContext;
         }
 
-    // Lấy toàn bộ sách (async)
-    public async Task<List<BookWithAuthorAndPublisherDTO>> GetAllBooksAsync()
+        // Lấy toàn bộ sách (async)
+        public async Task<List<BookWithAuthorAndPublisherDTO>> GetAllBooksAsync(
+        string? filterOn = null, string? filterQuery = null,
+        string? sortBy = null, bool isAscending = true,
+        int pageNumber = 1, int pageSize = 1000)
         {
-            return await _dbContext.Books
+            // Start with the base query.
+            var allBooksQuery = _dbContext.Books.AsQueryable();
+
+            // Apply filtering.
+            if (!string.IsNullOrWhiteSpace(filterOn) && !string.IsNullOrWhiteSpace(filterQuery))
+            {
+                if (filterOn.Equals("Title", StringComparison.OrdinalIgnoreCase))
+                {
+                    allBooksQuery = allBooksQuery.Where(book => book.Title.Contains(filterQuery));
+                }
+                // You can add more filtering options here.
+            }
+
+            // Apply sorting.
+            if (!string.IsNullOrWhiteSpace(sortBy))
+            {
+                if (sortBy.Equals("Title", StringComparison.OrdinalIgnoreCase))
+                {
+                    allBooksQuery = isAscending ? allBooksQuery.OrderBy(x => x.Title) :
+                        allBooksQuery.OrderByDescending(x => x.Title);
+                }
+            }
+
+            // Apply pagination.
+            var skipResults = (pageNumber - 1) * pageSize;
+            var pagedAndSortedBooksQuery = allBooksQuery.Skip(skipResults).Take(pageSize);
+
+            // Project the results to the DTO and execute the query.
+            return await pagedAndSortedBooksQuery
                 .Select(book => new BookWithAuthorAndPublisherDTO
                 {
                     Id = book.Id,
                     Title = book.Title,
                     Description = book.Description,
                     IsRead = book.IsRead,
-                    DateRead = book.IsRead ? book.DateRead : null,
-                    Rate = book.IsRead ? book.Rate : null,
+                    DateRead = book.IsRead ? book.DateRead.Value : null,
+                    Rate = book.IsRead ? book.Rate.Value : null,
                     Genre = book.Genre,
                     CoverUrl = book.CoverUrl,
                     PublisherName = book.Publisher.Name,
