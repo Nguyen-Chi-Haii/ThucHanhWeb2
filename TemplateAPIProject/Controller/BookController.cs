@@ -60,6 +60,10 @@ isAscending);
             try
             {
                 var createdBook = await _bookRepository.AddBookAsync(addBookRequestDTO);
+                if (createdBook == null)
+                {
+                    return Conflict(new { message = "Author is already assigned to this book." });
+                }
                 return Ok(new { Message = "Book added successfully", Book = createdBook });
             }
             catch (Exception ex)
@@ -94,31 +98,6 @@ isAscending);
             }
 
             return Ok(new { Message = "Book deleted successfully" });
-        }
-        private bool ValidateAddBook(AddBookRequestDTO addBookRequestDTO)
-        {
-            if (addBookRequestDTO == null)
-            {
-                ModelState.AddModelError(nameof(addBookRequestDTO), $"Please add book data");
-                return false;
-            }
-            // kiem tra Description NotNull
-            if (string.IsNullOrEmpty(addBookRequestDTO.Description))
-            {
-                ModelState.AddModelError(nameof(addBookRequestDTO.Description),
-               $"{nameof(addBookRequestDTO.Description)} cannot be null");
-            }
-            // kiem tra rating (0,5)
-            if (addBookRequestDTO.Rate < 0 || addBookRequestDTO.Rate > 5)
-            {
-                ModelState.AddModelError(nameof(addBookRequestDTO.Rate),
-               $"{nameof(addBookRequestDTO.Rate)} cannot be less than 0 and more than 5");
-            }
-            if (ModelState.ErrorCount > 0)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

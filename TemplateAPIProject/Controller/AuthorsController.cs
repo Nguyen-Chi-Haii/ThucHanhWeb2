@@ -33,7 +33,16 @@ namespace TemplateAPIProject.Controller
         [HttpPost("add-authors")]
         public IActionResult AddAuthors([FromBody] AddAuthorRequestDTO addAuthorRequestDTO)
         {
-            var authorAdd = _authorRepository.AddAuthor(addAuthorRequestDTO);
+            if(!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+            try {
+                var authorAdd = _authorRepository.AddAuthor(addAuthorRequestDTO);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
             return Ok();
         }
         [HttpPut("update-author-by-id/{id}")]
@@ -45,8 +54,15 @@ namespace TemplateAPIProject.Controller
         [HttpDelete("delete-author-by-id/{id}")]
         public IActionResult DeleteBookById(int id)
         {
-            var authorDelete = _authorRepository.DeleteAuthorById(id);
-            return Ok();
+            try
+            {
+                var authorDelete = _authorRepository.DeleteAuthorById(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 

@@ -14,6 +14,11 @@ namespace TemplateAPIProject.Repositories
 
         public AddAuthorRequestDTO AddAuthor(AddAuthorRequestDTO addAuthorRequestDTO)
         {
+            //Kiểm tra tên tác giả hợp lệ
+            if (string.IsNullOrWhiteSpace(addAuthorRequestDTO.FullName))
+            {
+                throw new Exception("Author name cannot be empty and must be longer than 3");
+            }
             var authorDomainModel = new Author
             {
                 FullName = addAuthorRequestDTO.FullName,
@@ -27,6 +32,12 @@ namespace TemplateAPIProject.Repositories
         public Author? DeleteAuthorById(int id)
         {
             var authorDomain = _dbContext.Authors.FirstOrDefault(n => n.Id == id);
+            //Kiểm tra khi xóa
+            var BookExists = _dbContext.Book_Authors.Any(n => n.AuthorId == authorDomain.Id);
+            if(BookExists)
+            {
+                throw new Exception("Hãy gỡ liên kết trong Book_Author trước khi xóa");
+            }
             if (authorDomain != null)
             {
                 _dbContext.Authors.Remove(authorDomain);

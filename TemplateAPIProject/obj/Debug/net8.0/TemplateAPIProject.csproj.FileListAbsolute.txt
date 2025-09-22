@@ -199,3 +199,4 @@ D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\refint\TemplateAPI
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.pdb
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.genruntimeconfig.cache
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\ref\TemplateAPIProject.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -13,6 +13,12 @@ namespace TemplateAPIProject.Repositories
         }
         public AddPublisherRequestDTO AddPublisher(AddPublisherRequestDTO addPublisherRequestDTO)
         {
+            //Kiểm tra tên nhà xuất bản không trùng lặp
+            var publisherExists = _dbContext.Publishers.Any(n => n.Name == addPublisherRequestDTO.Name);
+            if (publisherExists)
+            {
+                throw new Exception("Publisher name already exists");
+            }
             var publisherDomainModel = new Publisher
             {
                 Name = addPublisherRequestDTO.Name,
@@ -25,7 +31,15 @@ namespace TemplateAPIProject.Repositories
 
         public Publisher? DeletePublisherById(int id)
         {
+            
             var publisherDomain = _dbContext.Publishers.FirstOrDefault(n => n.Id == id);
+            //Kiểm tra tham chiếu trước khi xóa
+            var BookExists = _dbContext.Books.Any(n => n.PublisherID == publisherDomain.Id);
+            if (BookExists)
+            {
+                throw new Exception("Cannot delete this publisher");
+            }
+
             if (publisherDomain != null)
             {
                 _dbContext.Publishers.Remove(publisherDomain);

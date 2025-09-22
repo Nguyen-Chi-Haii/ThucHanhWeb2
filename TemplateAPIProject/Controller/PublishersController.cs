@@ -32,8 +32,20 @@ namespace TemplateAPIProject.Controller
         public IActionResult AddPublisher([FromBody] AddPublisherRequestDTO
        addPublisherRequestDTO)
         {
-            var publisherAdd = _publisherRepository.AddPublisher(addPublisherRequestDTO);
-            return Ok(publisherAdd);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var publisherAdd = _publisherRepository.AddPublisher(addPublisherRequestDTO);
+                return Ok(publisherAdd);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+            
         }
         [HttpPut("update-publisher-by-id/{id}")]
         public IActionResult UpdatePublisherById(int id, [FromBody] PublisherNoIdDTO
@@ -47,8 +59,15 @@ namespace TemplateAPIProject.Controller
         [HttpDelete("delete-publisher-by-id/{id}")]
         public IActionResult DeletePublisherById(int id)
         {
-            var publisherDelete = _publisherRepository.DeletePublisherById(id);
-            return Ok();
+            try
+            {
+                var publisherDelete = _publisherRepository.DeletePublisherById(id);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 

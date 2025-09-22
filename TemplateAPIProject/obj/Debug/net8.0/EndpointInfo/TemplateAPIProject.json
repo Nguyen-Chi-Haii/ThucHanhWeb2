@@ -509,11 +509,14 @@
   "components": {
     "schemas": {
       "AddAuthorRequestDTO": {
+        "required": [
+          "fullName"
+        ],
         "type": "object",
         "properties": {
           "fullName": {
-            "type": "string",
-            "nullable": true
+            "minLength": 3,
+            "type": "string"
           }
         },
         "additionalProperties": false
