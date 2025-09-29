@@ -205,3 +205,16 @@ D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.genruntimeconfig.cache
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\ref\TemplateAPIProject.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.AspNetCore.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Serilog.Sinks.File.dll

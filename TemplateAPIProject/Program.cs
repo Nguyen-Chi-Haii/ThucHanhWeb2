@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 using TemplateAPIProject.Data;
 using TemplateAPIProject.Repositories;
@@ -12,6 +13,11 @@ using TemplateAPIProject.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var _logger = new LoggerConfiguration()
+ .WriteTo.Console()// ghi ra console
+ .WriteTo.File("Logs/Book_log.txt", rollingInterval: RollingInterval.Minute).MinimumLevel.Information().CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(_logger);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

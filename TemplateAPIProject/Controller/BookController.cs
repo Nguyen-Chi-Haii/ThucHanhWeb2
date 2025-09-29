@@ -1,6 +1,7 @@
 ﻿using Catel.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using TemplateAPIProject.Models.DTO;
 using TemplateAPIProject.Repositories;
 using TemplateAPIProject.Repositories.TemplateAPIProject.Repositories;
@@ -14,10 +15,12 @@ namespace TemplateAPIProject.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookRepository _bookRepository;
+        private readonly ILogger<BookController> _logger;
 
-        public BookController(IBookRepository bookRepository)
+        public BookController(IBookRepository bookRepository, ILogger<BookController> logger)
         {
             _bookRepository = bookRepository;
+            _logger = logger;
         }
 
         // GET http://localhost:port/api/book/get-all-books
@@ -29,12 +32,14 @@ namespace TemplateAPIProject.Controllers
             [FromQuery] string? sortBy, [FromQuery] bool isAscending,
             [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
         {
+            _logger.LogInformation("Getting all books");
+            _logger.LogWarning("This is a warning message");
+            _logger.LogError("This is an error message");
             var allBooks = await _bookRepository.GetAllBooksAsync(filterOn, filterQuery, sortBy,
 isAscending);
+            _logger.LogInformation($"Finished GetAllBook request with data { JsonSerializer.Serialize(allBooks)} ");
             return Ok(allBooks);
         }
-
-
 
         // GET http://localhost:port/api/book/get-book-by-id/1
         [HttpGet("get-book-by-id/{id}")]
