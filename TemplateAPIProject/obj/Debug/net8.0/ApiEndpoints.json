@@ -246,6 +246,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TemplateAPIProject.Controller.UserController",
+    "Method": "Login",
+    "RelativePath": "api/User/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequestDTO",
+        "Type": "TemplateAPIProject.Models.DTO.TemplateAPIProject.Models.DTO.LoginRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.UserController",
+    "Method": "Register",
+    "RelativePath": "api/User/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerRequestDTO",
+        "Type": "TemplateAPIProject.Models.DTO.RegisterRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TemplateAPIProject.Controller.PublishersController",
     "Method": "DeletePublisherById",
     "RelativePath": "delete-publisher-by-id/{id}",

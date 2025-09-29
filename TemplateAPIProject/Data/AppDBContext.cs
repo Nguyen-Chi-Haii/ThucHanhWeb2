@@ -5,7 +5,7 @@ namespace TemplateAPIProject.Data
 {
     public class AppDBContext: DbContext
     {
-        public AppDBContext(DbContextOptions options) : base(options)
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

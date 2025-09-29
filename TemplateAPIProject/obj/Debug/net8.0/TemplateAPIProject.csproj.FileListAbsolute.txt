@@ -45,6 +45,10 @@ D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Azure.Core.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Azure.Identity.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Catel.Core.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Humanizer.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Build.Locator.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -65,6 +69,8 @@ D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensio
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
@@ -192,11 +198,10 @@ D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.bu
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.development.json
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\Template.E09BDDB7.Up2Date
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\refint\TemplateAPIProject.dll
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.pdb
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\TemplateAPIProject.genruntimeconfig.cache
 D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\ref\TemplateAPIProject.dll
-D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Code\Web2\ThucHanhWeb2\TemplateAPIProject\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

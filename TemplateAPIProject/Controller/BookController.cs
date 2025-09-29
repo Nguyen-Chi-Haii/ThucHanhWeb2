@@ -1,4 +1,5 @@
 ﻿using Catel.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TemplateAPIProject.Models.DTO;
 using TemplateAPIProject.Repositories;
@@ -9,6 +10,7 @@ namespace TemplateAPIProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookController : ControllerBase
     {
         private readonly IBookRepository _bookRepository;
@@ -21,6 +23,7 @@ namespace TemplateAPIProject.Controllers
         // GET http://localhost:port/api/book/get-all-books
         [HttpGet("get-all-books")]
         [HttpGet]
+        [Authorize(Roles = "Read")]
         public async Task<IActionResult> GetAll(
             [FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool isAscending,
@@ -35,6 +38,7 @@ isAscending);
 
         // GET http://localhost:port/api/book/get-book-by-id/1
         [HttpGet("get-book-by-id/{id}")]
+        [Authorize(Roles = "Read")]
         public async Task<IActionResult> GetBookById([FromRoute] int id)
         {
             var bookDTO = await _bookRepository.GetBookByIdAsync(id);
@@ -49,6 +53,7 @@ isAscending);
 
         // POST http://localhost:port/api/book/add-book
         [HttpPost("add-book")]
+        [Authorize(Roles ="Read,Write")]
 
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
@@ -74,6 +79,7 @@ isAscending);
 
         // PUT http://localhost:port/api/book/update-book-by-id/1
         [HttpPut("update-book-by-id/{id}")]
+        [Authorize(Roles ="Read,Write")]
         public async Task<IActionResult> UpdateBookById([FromRoute] int id, [FromBody] AddBookRequestDTO bookDTO)
         {
             var updatedBook = await _bookRepository.UpdateBookByIdAsync(id, bookDTO);
@@ -88,6 +94,7 @@ isAscending);
 
         // DELETE http://localhost:port/api/book/delete-book-by-id/1
         [HttpDelete("delete-book-by-id/{id}")]
+        [Authorize(Roles ="Read,Write")]
         public async Task<IActionResult> DeleteBookById([FromRoute] int id)
         {
             var deletedBook = await _bookRepository.DeleteBookByIdAsync(id);
