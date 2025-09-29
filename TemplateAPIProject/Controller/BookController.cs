@@ -58,7 +58,7 @@ isAscending);
 
         // POST http://localhost:port/api/book/add-book
         [HttpPost("add-book")]
-        [Authorize(Roles ="Read,Write")]
+        [Authorize(Roles ="Write")]
 
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
@@ -84,7 +84,7 @@ isAscending);
 
         // PUT http://localhost:port/api/book/update-book-by-id/1
         [HttpPut("update-book-by-id/{id}")]
-        [Authorize(Roles ="Read,Write")]
+        [Authorize(Roles ="Write")]
         public async Task<IActionResult> UpdateBookById([FromRoute] int id, [FromBody] AddBookRequestDTO bookDTO)
         {
             var updatedBook = await _bookRepository.UpdateBookByIdAsync(id, bookDTO);
@@ -99,7 +99,7 @@ isAscending);
 
         // DELETE http://localhost:port/api/book/delete-book-by-id/1
         [HttpDelete("delete-book-by-id/{id}")]
-        [Authorize(Roles ="Read,Write")]
+        [Authorize(Roles ="Write")]
         public async Task<IActionResult> DeleteBookById([FromRoute] int id)
         {
             var deletedBook = await _bookRepository.DeleteBookByIdAsync(id);
