@@ -26,7 +26,7 @@ namespace TemplateAPIProject.Controllers
         // GET http://localhost:port/api/book/get-all-books
         [HttpGet("get-all-books")]
         [HttpGet]
-        [Authorize(Roles = "Read")]
+        [Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> GetAll(
             [FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool isAscending,
@@ -43,7 +43,7 @@ isAscending);
 
         // GET http://localhost:port/api/book/get-book-by-id/1
         [HttpGet("get-book-by-id/{id}")]
-        [Authorize(Roles = "Read")]
+        [Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> GetBookById([FromRoute] int id)
         {
             var bookDTO = await _bookRepository.GetBookByIdAsync(id);

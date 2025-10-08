@@ -28,5 +28,7 @@ namespace TemplateAPIProject.Data
         public DbSet<TemplateAPIProject.Models.Domain.Publisher> Publishers { get; set; }
         public DbSet<TemplateAPIProject.Models.Domain.Author> Authors { get; set; }
         public DbSet<TemplateAPIProject.Models.Domain.Book_Author> Book_Authors { get; set; }
+
+        public DbSet<TemplateAPIProject.Models.Domain.Image> Images { get; set; }
     }
 }

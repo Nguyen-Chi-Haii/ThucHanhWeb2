@@ -246,6 +246,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TemplateAPIProject.Controller.ImagesController",
+    "Method": "Upload",
+    "RelativePath": "api/images/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileDescription",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TemplateAPIProject.Controller.UserController",
     "Method": "Login",
     "RelativePath": "api/User/Login",
@@ -294,6 +320,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TemplateAPIProject.Controller.ImagesController",
+    "Method": "Download",
+    "RelativePath": "download/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TemplateAPIProject.Controller.PublishersController",
     "Method": "GetAllPublisher",
     "RelativePath": "get-all-publisher",
@@ -317,6 +359,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TemplateAPIProject.Controller.ImagesController",
+    "Method": "GetAll",
+    "RelativePath": "GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
