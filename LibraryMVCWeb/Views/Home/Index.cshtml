@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LibraryMVCWeb.Models.DTO.BookDTO>
+
+@{
+    ViewData["Title"] = "Danh Sách Sách";
+}
+
+<h1>Danh Sách Sách</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="addBook">Thêm Sách Mới</a>
+</p>
+
+<form asp-controller="Books" asp-action="Index" method="GET" class="border p-3 mb-4 bg-light">
+
+    <h4>Bộ Lọc & Sắp Xếp</h4>
+    <div class="row mb-2">
+        <div class="col-md-3">
+            <label>Tìm kiếm sách:</label>
+            <select name="filterOn" id="filterOn" class="form-control">
+                <option value="title">Tiêu đề</option>
+                <option value="author">Tác giả</option>
+                <option value="publisher">Nhà xuất bản</option>
+            </select>
+        </div>
+        <div class="col-md-5">
+            <label>Từ khóa:</label>
+            <input type="text" name="filterQuery" class="form-control" placeholder="Nhập từ khóa..." />
+        </div>
+    </div>
+
+    <div class="row mb-3 align-items-end">
+        <div class="col-md-3">
+            <label>Sắp xếp theo:</label>
+            <select name="sortBy" id="sortBy" class="form-control">
+                <option value="title">Tiêu đề</option>
+                <option value="rate">Đánh giá</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label>Thứ tự:</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="isAscending" id="sortAsc" value="True" checked>
+                <label class="form-check-label" for="sortAsc">Tăng dần</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="isAscending" id="sortDesc" value="False">
+                <label class="form-check-label" for="sortDesc">Giảm dần</label>
+            </div>
+        </div>
+        <div class="col-md-5 text-right">
+            <input type="submit" value="Tìm Kiếm & Sắp Xếp" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Đặt Lại</a>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<h2>Kết Quả</h2>
+@* Đặt mã bảng (<table>...</table>) của bạn ở đây *@

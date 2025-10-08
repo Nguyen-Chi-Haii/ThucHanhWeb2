@@ -1,0 +1,24 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LibraryWeb.Models.DTO
+{
+    public class AddBookDTO
+    {
+        [Required]
+        [MinLength(10)]
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public bool IsRead { get; set; }
+        public DateTime? DateRead { get; set; }
+        public int? Rate { get; set; }
+        public string? Genre { get; set; }
+        public string? CoverUrl { get; set; }
+        public DateTime DateAdded { get; set; }
+
+        // Navigation Properties
+        [Required]
+        public int PublisherID { get; set; }
+        [Required]
+        public List<int> AuthorIds { get; set; } = new List<int>();
+    }
+}

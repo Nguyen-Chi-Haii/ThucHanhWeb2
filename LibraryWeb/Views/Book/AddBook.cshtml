@@ -1,0 +1,104 @@
+﻿@model LibraryWeb.Models.DTO.AddBookDTO
+@{
+    ViewData["Title"] = "Thêm Sách Mới";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<h2>Thêm Sách Mới</h2>
+
+<form asp-action="AddBook" method="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Tiêu đề</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Mô tả</label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PublisherID" class="form-label">Nhà xuất bản</label>
+        <select asp-for="PublisherID" asp-items="ViewBag.Publishers" class="form-select">
+            <option value="">-- Chọn nhà xuất bản --</option>
+        </select>
+        <span asp-validation-for="PublisherID" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tác giả</label>
+        <select asp-for="AuthorIds" asp-items="ViewBag.Authors" multiple class="form-select" size="5">
+        </select>
+        <span asp-validation-for="AuthorIds" class="text-danger"></span>  <!-- 🆕 Thêm validation nếu cần -->
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsRead" class="form-check-input" id="isReadCheckbox" />  <!-- 🆕 ID cho JS -->
+        <label asp-for="IsRead" class="form-check-label">Đã đọc sách này?</label>
+    </div>
+
+    <!-- 🆕 Field DateRead: Ẩn/mở động dựa trên IsRead -->
+    <div class="mb-3" id="dateReadGroup" style="display: none;">
+        <label asp-for="DateRead" class="form-label">Ngày đọc xong</label>
+        <input asp-for="DateRead" type="date" class="form-control" />
+        <span asp-validation-for="DateRead" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Genre" class="form-label">Thể loại</label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <!-- 🆕 Rate: Đổi thành dropdown -->
+    <div class="mb-3">
+        <label asp-for="Rate" class="form-label">Đánh giá (sao)</label>
+        <select asp-for="Rate" class="form-select">
+            <option value="">-- Chưa đánh giá --</option>  <!-- Cho null -->
+            <option value="1">1 sao</option>
+            <option value="2">2 sao</option>
+            <option value="3">3 sao</option>
+            <option value="4">4 sao</option>
+            <option value="5">5 sao</option>
+        </select>
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CoverUrl" class="form-label">URL bìa sách</label>
+        <input asp-for="CoverUrl" class="form-control" placeholder="https://example.com/cover.jpg" />
+        <span asp-validation-for="CoverUrl" class="text-danger"></span>
+    </div>
+
+    <!-- 🆕 Note: DateAdded không cần input, set ở API -->
+
+    <button type="submit" class="btn btn-success">Lưu Sách</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- 🆕 JS đơn giản để show/hide DateRead -->
+    <script>
+        document.getElementById('isReadCheckbox').addEventListener('change', function() {
+            const dateReadGroup = document.getElementById('dateReadGroup');
+            if (this.checked) {
+                dateReadGroup.style.display = 'block';
+            } else {
+                dateReadGroup.style.display = 'none';
+                document.getElementById('DateRead').value = '';  // Clear value khi uncheck
+            }
+        });
+    </script>
+}

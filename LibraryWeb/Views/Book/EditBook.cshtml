@@ -1,0 +1,111 @@
+﻿@model LibraryWeb.Models.DTO.UpdateBookDTO
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sách";
+}
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<h2>Chỉnh sửa sách</h2>
+
+<form asp-action="EditBook" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Tiêu đề</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PublisherID" class="form-label">Nhà xuất bản</label>
+        <select asp-for="PublisherID" asp-items="ViewBag.Publishers" class="form-select">
+            <option value="">-- Chọn nhà xuất bản --</option>
+        </select>
+        <span asp-validation-for="PublisherID" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tác giả</label>
+        <select asp-for="AuthorIds" asp-items="ViewBag.Authors" multiple class="form-select" size="5"></select>
+        <span asp-validation-for="AuthorIds" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <!-- đặt id rõ ràng để JS dễ lấy -->
+        <input asp-for="IsRead" id="isReadCheckbox" class="form-check-input" />
+        <label asp-for="IsRead" class="form-check-label">Đã đọc sách này?</label>
+    </div>
+
+    <div class="mb-3" id="dateReadGroup" style="display:none;">
+        <label asp-for="DateRead" class="form-label">Ngày đọc xong</label>
+        <!-- để chắc chắn id là DateRead cho JS -->
+        <input asp-for="DateRead" id="DateRead" type="date" class="form-control" />
+        <span asp-validation-for="DateRead" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Genre" class="form-label">Thể loại</label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <!-- 🆕 Rate: Đổi thành dropdown -->
+    <div class="mb-3">
+        <label asp-for="Rate" class="form-label">Đánh giá (sao)</label>
+        <select asp-for="Rate" class="form-select">
+            <option value="">-- Chưa đánh giá --</option>  <!-- Cho null -->
+            <option value="1">1 sao</option>
+            <option value="2">2 sao</option>
+            <option value="3">3 sao</option>
+            <option value="4">4 sao</option>
+            <option value="5">5 sao</option>
+        </select>
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CoverUrl" class="form-label">URL bìa sách</label>
+        <input asp-for="CoverUrl" class="form-control" placeholder="https://example.com/cover.jpg" />
+        <span asp-validation-for="CoverUrl" class="text-danger"></span>
+    </div>
+
+    <!-- 🆕 Note: DateAdded không cần input, set ở API -->
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isReadCheckbox = document.getElementById('isReadCheckbox');
+            const dateReadGroup = document.getElementById('dateReadGroup');
+            const dateReadInput = document.getElementById('DateRead');
+
+            function toggleDateRead() {
+                if (!isReadCheckbox || !dateReadGroup) return;
+                if (isReadCheckbox.checked) {
+                    dateReadGroup.style.display = 'block';
+                } else {
+                    dateReadGroup.style.display = 'none';
+                    if (dateReadInput) dateReadInput.value = ''; // xóa nếu uncheck
+                }
+            }
+
+            // CHẠY LẦN ĐẦU để set đúng trạng thái khi load trang
+            toggleDateRead();
+
+            // Lắng nghe thay đổi sau này
+            if (isReadCheckbox) isReadCheckbox.addEventListener('change', toggleDateRead);
+        });
+    </script>
+}
